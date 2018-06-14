@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mulesoft.traning</groupId>
-	<artifactId>maven-demo</artifactId>
+	<artifactId>maven-demo-nayak20</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule</packaging>
 	<name>Mule maven-demo Application</name>
@@ -11,9 +11,10 @@
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<mule.version>3.9.0</mule.version>
+        <mule.version>3.9.0</mule.version>
     	<mule.tools.version>1.2</mule.tools.version>
+    	<uid>sipra</uid>
+        <pwd>123Num456@</pwd>
 	</properties>
 
 	<build>
@@ -24,8 +25,23 @@
 				<version>${mule.tools.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-                    <copyToAppsDirectory>true</copyToAppsDirectory>
-				</configuration>
+			        <deploymentType>cloudhub</deploymentType>
+			        <muleVersion>${mule.version}</muleVersion>
+			        <username>${uid}</username>
+			        <password>${pwd}</password>
+				      <workerType>Micro</workerType>
+			        <redeploy>true</redeploy>
+			        <environment>Sandbox</environment>
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <id>deploy</id>
+			            <phase>deploy</phase>
+			            <goals>
+			                <goal>deploy</goal>
+			            </goals>
+			        </execution>
+			    </executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
